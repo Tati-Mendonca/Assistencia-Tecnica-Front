@@ -1,0 +1,36 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.header{
+    padding-bottom: 5em;
+}
+
+.marca{
+    height: 300px;
+}
+
+.phone{
+    height: 500px;
+}
+
+#mensagem{
+    resize: none;
+    height: 9em;
+}
+
+.official-photo {
+    width:50px;
+}
+
+.funcionario{
+    font-weight: 300;
+}
+
+.esqueceu-senha{
+    font-size: smaller;
+}
+.footer-size{
+    padding: 5%;
+    background-color: blueviolet;
+}
