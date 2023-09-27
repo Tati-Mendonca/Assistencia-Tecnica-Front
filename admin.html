@@ -13,14 +13,18 @@
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="js/ordem-servico.js"></script>
+    <script type="text/javascript" src="js/tecnicos.js"></script>
+    <script type="text/javascript" src="js/servicos.js"></script>
+    <script type="text/javascript" src="js/filtro-dinamico.js"></script>
 </head>
 
-<body class="bg-light">
+<body class="bg-light" onload="load()">
 
-    <header class="bg-primary p-1 text-light">
-
+    <div class="bg-primary p-1 text-light">
         <nav class="navbar navbar-expand-lg my-3">
             <div class="container">
                 <a class="navbar-brand text-light" href="#/index.html"> Assistência Co.</a>
@@ -30,11 +34,10 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-list icon-menu"></i>
                 </button>
-                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
 
                 <div class="d-flex align-items-center">
                     <div class="photo">
-                        <img src="./images/user.png" alt="" class="official-photo">
+                        <img src="./images/user.png" alt="" class="official-photo mb-3">
                     </div>
                     <div class="employee-data funcionario">
                         <h5>Olá Funcionário</h5>
@@ -82,160 +85,334 @@
                 <!-- </div> -->
             </div>
         </nav>
-    </header>
+    </div>
 
     <main class="container mb-5">
+        <header>
+            <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                        type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-tab-pane"
+                        type="button" role="tab" aria-controls="search-tab-pane" aria-selected="false">Buscar</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="servicos-tab" data-bs-toggle="tab" data-bs-target="#servicos-tab-pane"
+                        type="button" onclick="loadServicos()" role="tab" aria-controls="custos-tab-pane"
+                        aria-selected="false">Serviços</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tecnicos-tab" data-bs-toggle="tab" data-bs-target="#tecnicos-tab-pane"
+                        type="button" onclick="loadTech()" role="tab" aria-controls="tecnicos-tab-pane"
+                        aria-selected="false">Técnicos</button>
+                </li>
+            </ul>
+        </header>
+
+        <div class="tab-content" id="home-tab">
+
+            <section class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                tabindex="0">
+                <div
+                    class="g-col-lg-8 g-col-md-12 g-col-12 border border-top-0 border-1 rounded-1 rounded-top-0  p-4 mx-n2">
+                    <h4 class="font-title">Cadastrar Equipamento</h4>
+                    <form class="dados" id="dados" method="post" action="">
+
+                        <div class="row mb-3">
+                            <div class="col-md-8 my-3">
+                                <label for="proprietario" class="form-label">Proprietário</label>
+                                <input type="text" class="form-control" id="proprietario" name="proprietario"
+                                    placeholder="Digite o nome" required>
+                            </div>
+
+                            <div class="col-md-4 my-3">
+                                <label for="tipo" class="form-label">Tipo de Equipamento</label>
+                                <select name="tipo" id="tipo" class="form-select" required>
+                                </select>
+                            </div>
+
+                            <!-- <div class="col-md-4 my-3">
+                                <label for="modelo" class="form-label">Descrição</label>
+                                <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Marca ou Modelo">
+                            </div> -->
+
+                            <div class="col-md-12 my-3">
+                                <label for="defeito" class="form-label">Reparo</label>
+                                <textarea class="form-control" id="defeito" name="defeito"
+                                    placeholder="Ex: Tela quebrada..." required></textarea>
+                            </div>
+
+                            <div class="col-md-4 my-3">
+                                <label for="dataEntrada" class="form-label">Data de Entrada</label>
+                                <input type="date" class="form-control" id="dataEntrada" name="dataEntrada" required>
+                            </div>
+
+                            <div class="col-md-4 my-3">
+                                <label for="status" class="form-label">Status</label>
+                                <select name="status" id="status" class="form-select" required>
+                                    <option value="0">Selecione</option>
+                                    <option value="0">Aguardando aprovação</option>
+                                    <option value="0">Aguardando orçamento</option>
+                                    <option value="0">Em concerto</option>
+                                    <option value="0">Finalizado</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 my-3">
+                                <label for="dataSaida" class="form-label">Previsão de Entrega</label>
+                                <input type="date" class="form-control" id="dataSaida" name="dataSaida" required>
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" onclick="inserir(), reloadTable()"
+                                class="btn btn-primary">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+                <article>
+                    <div class=" g-col-12 border border-1 rounded-1 p-4">
+                        <h4 class="font-title">Ordem de Serviço</h4>
+                        <table class="text-center table mt-4 font-light table-striped">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Cód</th>
+                                    <th>Proprietário</th>
+                                    <th>Equipamento</th>
+                                    <th>Modelo</th>
+                                    <th>Entrada</th>
+                                    <th>Reparo</th>
+                                    <th>Previsão</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableDados"> <!-- onde a mágica acontece <<<<<<<<<<<< -->
+
+                            </tbody>
+
+                        </table>
+                        <nav aria-label="Navegação de página exemplo">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Anterior">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only font-light">Anterior</span>
+                                    </a>
+                                </li>
+                                <li class="page-item font-light"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item font-light"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item font-light"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item font-light">
+                                    <a class="page-link" href="#" aria-label="Próximo">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Próximo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <section class="tab-pane fade" id="search-tab-pane" role="tabpanel" aria-labelledby="search-tab"
+                tabindex="0">
+                <!-- <h4 class="font-title">Ordem de Serviço</h4> -->
+                <div
+                    class="col-lg-12 g-col-md-12 g-col-12 border border-1 rounded-1 rounded-top-0 rounded-bottom-0 border-bottom-0 border-top-0 mx-n2 d-flex justify-content-between">
+
+                    <div class="col-6 p-4">
+                        <h4 class="font-title">Ordem de Serviço</h4>
+                    </div>
+
+                    <div class="col-4">
+                        <label for="search"></label>
+                        <form id="form-search"></form>
+                        <!-- <input type="search" name="nome" id="nome" onsearch="consultarfiltro()" class="form-control"
+                                placeholder="Pesquisar"> -->
+                        <input type="search" name="nome" id="search" class="form-control" placeholder="Pesquisar"
+                            onsearch="consultarfiltro()">
+                        <label for="dataEntrada" class="form-label">Data Entrada</label>
+                        <input type="date" name="dataEntrada" id="data-entrada" class="form-control">
+                        <label for="dataSaida" class="col-form-label-sm">Data Saida</label>
+                        <input type="date" name="dataSaida" id="data-fim" class="form-control">
+
+                        <!-- <label for="modelo" class="form-label">Modelo</label>
+                            <input type="text" name="modelo" id="form-modelo" class="form-control"> -->
+
+                        <label for="documento" class="form-label">Documento</label>
+                        <input type="text" name="documento" id="form-documento" class="form-control">
+
+                        <button id="buscarOS" class="btn btn-primary" onclick="consultarfiltro()">Pesquisar</button>
+
+                    </div>
+                    <!-- <input type="search" name="search" id="search" onsearch="consultar()" class="form-control"
+                            placeholder="Pesquisar">
+                    </div> -->
+                    <div class="col-2 p-4">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Prioridade</option>
+                            <option value="1">Baixa</option>
+                            <option value="2">Média</option>
+                            <option value="3">Alta</option>
+                            <option value="4">Critica</option>
+                        </select>
+                    </div>
+
+                </div>
+                <article>
+                    <div class=" g-col-12 border border-1 border-top-0 rounded-1 rounded-top-0 px-4">
+                        <!-- <h4 class="font-title">Ordem de Serviço</h4> -->
+                        <table class="text-center table py-4 font-light table-striped">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Cód</th>
+                                    <th>Proprietário</th>
+                                    <th>Equipamento</th>
+                                    <th>Modelo</th>
+                                    <th>Entrada</th>
+                                    <th>Reparo</th>
+                                    <th>Previsão</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableResultado">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </article>
+                <!--<nav aria-label="Navegação de página exemplo">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Anterior">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Anterior</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Próximo">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Próximo</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav> -->
+
+            </section>
+
+
+            <section class="tab-pane fade" id="servicos-tab-pane" role="tabpanel" aria-labelledby="servicos-tab"
+                tabindex="0">
+
+
+                <div
+                    class="col-lg-12 g-col-md-12 g-col-12 border border-1 rounded-1 rounded-top-0 rounded-bottom-0 border-bottom-0 border-top-0 mx-n2 d-flex justify-content-between">
+
+                    <div class="col-6 p-4">
+                        <h4 class="font-title">Serviços Disponíveis</h4>
+                    </div>
+
+                    <div class="col-4 ">
+                        <label for="search"></label>
+                        <form action=""></form>
+                        <input type="search" name="search" id="search" onsearch="consultar()" class="form-control"
+                            placeholder="Pesquisar">
+                    </div>
+                    <div class="col-2 p-4">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Filtrar</option>
+                            <option value="1">Notebook</option>
+                            <option value="2">Tablet</option>
+                            <option value="3">Celular</option>
+                        </select>
+                    </div>
+
+                </div>
+                <article>
+                    <div class=" g-col-12 border border-1 border-top-0 rounded-1 rounded-top-0 px-4">
+
+                        <table class="text-center table py-4 font-light table-striped">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Cód</th>
+                                    <th>Descrição</th>
+                                    <!-- <th>Equipamento</th> -->
+                                    <th>Valor</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableServicos">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </article>
+
+
+            </section>
+            <section class="tab-pane fade" id="tecnicos-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
+                tabindex="0">
+
+                <article class="d-flex">
+                    <div class=" col-8 border border-1 border-top-0 border-end-0 rounded-1 p-4">
+                        <h4 class="font-title">Consultar Técnicos</h4>
+
+                        <table class="text-center table mt-4 font-light table-striped">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nome</th>
+                                    <th>Telefone</th>
+                                    <th>Email</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableTecnicos"> <!-- onde a mágica acontece <<<<<<<<<<<< -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <aside class="col-4">
+
+                        <div class="border border-top-0 p-4">
+                            <h4 class="font-title">Novo Cadastro</h4>
+                            <label for="nameTech" class="form-label mt-4">Nome</label>
+                            <input type="text" name="nameTech" id="nameTech" class="form-control"
+                                placeholder="Digite o nome">
+                            <label for="telefoneTech" class="form-label mt-4">Telefone</label>
+                            <input type="text" name="telefoneTech" id="telefoneTech" class="form-control"
+                                placeholder="(xx) xxxx-xxxx">
+                            <label for="emalTech" class="form-label mt-4">Email</label>
+                            <input type="email" name="emalTech" id="emalTech" class="form-control"
+                                placeholder="email@assistenciacompany.com">
+                            <div class="d-flex justify-content-end mt-4">
+                                <button type="button" onclick="cadastrarTech()" class="btn btn-primary my-4">
+                                    Cadastrar</button>
+                            </div>
+                        </div>
+                    </aside>
+                </article>
+
+            </section>
+        </div>
 
         <div class="grid gap-1">
 
-            <!-- Coluna 1 -->
-            <section class="g-col-lg-8 g-col-md-12 g-col-12 border border-1 rounded-1 mt-5 p-4 mx-n2">
-            <!-- <section class="g-col-8 border border-1 rounded-1 mt-5 p-4 mx-n2"> -->
-                <h4>Cadastrar Equipamento</h4>
-                <form class="dados" id="dados" method="post" action="">
-
-                    <div class="row mb-3">
-                        <div class="col-md-4 my-3">
-                            <label for="proprietario" class="form-label">Proprietário</label>
-                            <input type="text" class="form-control" id="proprietario" name="proprietario"
-                                placeholder="Ex: Jimmy Page" required>
-                        </div>
-
-                        <div class="col-md-4 my-3">
-                            <label for="tipo" class="form-label">Tipo de Equipamento</label>
-                            <select name="tipo" id="tipo" class="form-select">
-                                <option value="0">Selecione</option>
-                                <option value="1">Equipamento A</option>
-                                <option value="2">Equipamento B</option>
-                                <option value="3">Equipamento C</option>
-                                <option value="4">Equipamento D</option>
-                                <option value="5">Equipamento E</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4 my-3">
-                            <label for="dataEntrada" class="form-label">Entrada Lab</label>
-                            <input type="date" class="form-control" id="dataEntrada" name="dataEntrada" required>
-                        </div>
-
-                        <div class="col-md-12 my-3">
-                            <label for="defeito" class="form-label">Reparo</label>
-                            <textarea class="form-control" id="defeito" name="defeito"
-                                placeholder="Ex: Tela quebrada..." required></textarea>
-                        </div>
-
-                        <div class="col-md-6 my-3">
-                            <label for="dataSaida" class="form-label">Previsão Entrega</label>
-                            <input type="date" class="form-control" id="dataSaida" name="dataSaida" required>
-                        </div>
-
-                        <div class="col-md-6 my-3">
-                            <label for="status" class="form-label">Status do conserto</label>
-                            <select name="status" id="status" class="form-select">
-                                <option value="0">Selecione o status</option>
-                                <option value="0">Aguardando aprovação</option>
-                                <option value="0">Aguardando orçamento</option>
-                                <option value="0">Em concerto</option>
-                                <option value="0">Finalizado</option>
-                            </select>
-                        </div>
-
-                        <!-- <div class="col-md-12 my-3">
-                            <label for="observacao" class="form-label">Observações</label>
-                            <textarea class="form-control" id="observacao" name="observacao"
-                                placeholder="Ex: O equipamento..." required></textarea>
-                        </div> -->
-
-                    </div>
-                    <div class="d-flex justify-content-end mt-4">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- Coluna 2 -->
-            <section class="g-col-lg-4 g-col-md-12 g-col-12 border border-1 rounded-1 mt-5 p-4 mx-n2">
-                <h4>Pesquisar</h4>
-                <label for="search" class="mt-3">Ordem de Serviço</label>
-                <div class=" d-flex justify-content-end mt-2">
-                    <form action=""></form>
-                    <input type="search" class="form-control" placeholder="Ex: Cód123">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                </div>
-            </section>
-
-            <!-- Coluna 3 -->
-            <section class=" g-col-12 border border-1 rounded-1 p-4">
-                <h4>Ordem de Serviço</h4>
-                <table class=" text-center table mt-4 table-striped">
-                    <thead class="table-primary">
-                        <tr>
-                            <th>Proprietário</th>
-                            <th>Entrada</th>
-                            <th>Reparo</th>
-                            <th>Previsão de entrega</th>
-                            <th>Status</th>
-                            <th>Observações</th>
-                            <th>Operações Sistema</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jimmy Page</td>
-                            <td>01/07/2023</td>
-                            <td>Cabo com mal contato</td>
-                            <td>10/07/2023</td>
-                            <td>Em concerto</td>
-                            <td>Orçamento aprovado</td>
-                            <td><a href="">Alterar</a> | <a href="">Finalizar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Jimmy Page</td>
-                            <td>01/07/2023</td>
-                            <td>Cabo com mal contato</td>
-                            <td>10/07/2023</td>
-                            <td>Em concerto</td>
-                            <td>Orçamento aprovado</td>
-                            <td><a href="">Alterar</a> | <a href="">Finalizar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Jimmy Page</td>
-                            <td>01/07/2023</td>
-                            <td>Cabo com mal contato</td>
-                            <td>10/07/2023</td>
-                            <td>Em concerto</td>
-                            <td>Orçamento aprovado</td>
-                            <td><a href="">Alterar</a> | <a href="">Finalizar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Jimmy Page</td>
-                            <td>01/07/2023</td>
-                            <td>Cabo com mal contato</td>
-                            <td>10/07/2023</td>
-                            <td>Em concerto</td>
-                            <td>Orçamento aprovado</td>
-                            <td><a href="">Alterar</a> | <a href="">Finalizar</a></td>
-                        </tr>
-                        <tr>
-                            <td>Jimmy Page</td>
-                            <td>01/07/2023</td>
-                            <td>Cabo com mal contato</td>
-                            <td>10/07/2023</td>
-                            <td>Em concerto</td>
-                            <td>Orçamento aprovado</td>
-                            <td><a href="">Alterar</a> | <a href="">Finalizar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
         </div>
     </main>
-
-
-
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -245,17 +422,38 @@
 
 </html>
 
-<!-- <div class="container text-center">
-    <div class="row ">
-        <div class="col-8">
-            <div class="p-3 bg-danger">
 
-                Preenchimento de coluna personalizado</div>
-        </div>
-        <div class="col-4">
-            <div class="p-3 bg-danger-subtle">
-
-                Preenchimento de coluna personalizado</div>
-        </div>
+<!-- <div class="col-md-4 my-3">
+    <label for="observacao" class="form-label">Prioridade</label>
+    <div class="mt-2">
+        <input type="radio" name="prioridade" id="media">
+        <label for="media">Média</label>
+        <input type="radio" name="prioridade" id="alta" class="ms-2">
+        <label for="alta">Alta</label>
+        <input type="radio" name="prioridade" id="critica" class="ms-2">
+        <label for="critica">Crítica</label>
     </div>
-</div> -->
+    <!-- <label for="alta">Baixa</label>
+    <input type="radio" name="prioridade" id="baixa"> -->
+<!-- <textarea class="form-control" id="observacao" name="observacao"
+        placeholder="Ex: O equipamento..." required></textarea> -->
+<!-- </div> -->
+
+
+<!-- <div class="tab-content" id="searcch-tab">
+    <div class="tab-pane fade" id="search-tab" role="search-tab" aria-labelledby="search-tab" tabindex="0">
+        <div class="d-flex">
+            <!-- Coluna 2 -->
+<!-- <section class="col-lg-8 g-col-md-12 g-col-12 border border-1 border-top-0 rounded-1  p-sm-4 mx-n2"> -->
+<!-- <section class="g-col-lg-4 g-col-md-12 g-col-12 border border-1 border-top-0 rounded-1  p-sm-4 mx-n2"> -->
+<!-- 
+                <h4 class="font-title">Buscar Ordem de Serviço</h4>
+                <!-- <label for="search"></label> -->
+<!-- <div class=" d-flex justify-content-end mt-2">
+                    <form action=""></form>
+                    <input type="search" name="search" id="search" class="form-control" placeholder="Ex: Cód123">
+                    <button type="submit" onclick="consultar()" class="ms-2 btn btn-primary">Buscar</button>
+                </div>
+            </section>
+
+        </div>   -->

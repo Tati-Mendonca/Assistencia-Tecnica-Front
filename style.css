@@ -1,6 +1,18 @@
 body{
     font-family: 'Poppins', sans-serif;
 }
+.font-light{
+    font-weight: 300;
+}
+.font-title{
+ font-weight: 400;
+ font-size: 1,3em;
+}
+
+th{
+    font-weight: 400;
+}
+
 
 .header{
     padding-bottom: 5em;
