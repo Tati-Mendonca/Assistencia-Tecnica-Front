@@ -46,3 +46,11 @@ th{
     padding: 5%;
     background-color: blueviolet;
 }
+
+.elemento-oculto{
+    display: none;
+}
+
+.elemento-visivel{
+    display: block;
+}

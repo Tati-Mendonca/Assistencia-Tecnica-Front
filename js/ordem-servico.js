@@ -1,4 +1,4 @@
-const urlBase = "http://localhost:8080/";
+let urlBase = "http://localhost:8080/";
 const urlEquipamentos = urlBase + "equipamentos"
 const urlOS = urlBase + "ordem-servico"
 const urlTecnicos = urlBase + "tecnicos"
@@ -38,14 +38,15 @@ function inserir() {
             "tipo": document.querySelector("#tipo").value
         },
         "cliente": document.querySelector("#proprietario").value,
-        "entrada": document.querySelector("#dataEntrada").value,
-        "previsao": document.querySelector("#dataSaida").value,
+        "observacoes": document.querySelector("#documento").value,
         "defeito": document.querySelector("#defeito").value,
-
+        "entrada": document.querySelector("#dataEntrada").value,
         "status": document.querySelector("#status").value,
-
+        "previsao": document.querySelector("#dataSaida").value,    
     }
     //    "prioridade": document.querySelector("#prioridade").value,
+
+    console.log(body);
     const requisicao = {
         method: "POST",
         body: JSON.stringify(body),
@@ -60,11 +61,10 @@ function inserir() {
                 alert("Registro inserido com sucesso");
             } else {
                 alert("Verifique os dados e tente novamente")
-                // alert("Verifique os dados e tente novamente")
             }
         })
-    console.log("Falha na requisição")
-    // .catch(error => alert("Falha na requisição"))
+
+    .catch(error => alert("Falha na requisição " + error))
 }
 //_______________________________________________________________________
 function listar() {
@@ -84,8 +84,8 @@ function montarDados(res) {
     res.forEach(e => dados += `<tr>
                                 <td>${e.id}</td>
                                 <td>${e.cliente.nome}</td>
-                                <td>${e.equipamento.tipo}</td>
                                 <td>${e.equipamento.modelo}</td>
+                                <td>${e.equipamento.tipo}</td>
                                 <td>${e.entrada}</td>
                                 <td>${e.defeito}</td>
                                 <td>${e.previsao}</td>
@@ -221,9 +221,14 @@ function buscarPorId(id) {
 }
 
 
-function home() {
-    alert("mudou pra home")
+function ativar(elemento) {
+    let itens = document.querySelectorAll(".page-item")
+    for (let i = 0; i < itens.length; i++) {
+        itens[i].classList.remove("active")
+    }
+    elemento.classList.add("active")
 }
+
 
 
 
