@@ -6,7 +6,9 @@ const urlTecnicos = urlBase + "tecnicos"
 function load() { //carrrega a página mostrando essas informações
     listarTipos();
     listar();
-    
+    const hoje = new Date()
+    document.getElementById("dataEntrada").defaultValue = hoje.getFullYear() + '-' + ('0' + (hoje.getMonth() + 1)).slice(-2) + '-' + ('0' + hoje.getDate()).slice(-2);
+
 }
 
 function reloadTable() {
@@ -35,17 +37,16 @@ function inserir() {
 
     const body = {
         "equipamento": {
-            "tipo": document.querySelector("#tipo").value
+            "tipo": document.querySelector("#tipo").value,
+            "modelo": document.querySelector("#modelo").value
         },
         "cliente": document.querySelector("#proprietario").value,
         "observacoes": document.querySelector("#documento").value,
         "defeito": document.querySelector("#defeito").value,
         "entrada": document.querySelector("#dataEntrada").value,
         "status": document.querySelector("#status").value,
-        "previsao": document.querySelector("#dataSaida").value,    
+        "previsao": document.querySelector("#dataSaida").value,
     }
-    //    "prioridade": document.querySelector("#prioridade").value,
-
     console.log(body);
     const requisicao = {
         method: "POST",
@@ -54,18 +55,19 @@ function inserir() {
             "Content-Type": "application/json"
         }
     }
-
     fetch(urlOS, requisicao)
-        .then(res => {
-            if (res.ok) {
-                alert("Registro inserido com sucesso");
-            } else {
+        .then(res => res.json())
+        .then((res) => {
+            console.log(error);
+            if (res.status === 200) {
+                alert("Registro inserido com sucesso")
+            } else if (res.status === 400) {
                 alert("Verifique os dados e tente novamente")
-            }
+            } 
         })
-
-    .catch(error => alert("Falha na requisição " + error))
+        .catch(error => console.log("Falha na requisição " + error))
 }
+
 //_______________________________________________________________________
 function listar() {
     const requisicao = {
@@ -162,6 +164,7 @@ function buscarPorId(id) {
             document.querySelector("#prioridade").value = e.prioridade;
 
         })
+        .catch(error => alert("Falha na requisição"))
 }
 
 //_______________________________________________________________________
@@ -172,7 +175,7 @@ function buscarPorId(id) {
 //     }
 
 //     const id = document.querySelector("#search").value;
-    
+
 
 //     const endpoint = `${urlOS}/${id}`;
 
@@ -199,26 +202,26 @@ function buscarPorId(id) {
 
 //_______________________________________________________________________
 
-function buscarPorId(id) {
-    var requisicao = {
-        method: "GET"
-    }
+// function buscarPorId(id) {
+//     var requisicao = {
+//         method: "GET"
+//     }
 
-    const endpoint = `${urlOS}/${id}`
+//     const endpoint = `${urlOS}/${id}`
 
-    fetch(endpoint, requisicao)
-        .then(res => res.json())
-        .then(e => {
-            // document.querySelector("#modelo").value = e.equipamento.modelo;
-            document.querySelector("#tipo").value = e.equipamento.tipo;
-            document.querySelector("#proprietario").value = e.cliente.nome;
-            document.querySelector("#dataEntrada").value = e.entrada;
-            document.querySelector("#dataSaida").value = e.eprevisao;
-            document.querySelector("#defeito").value = e.defeito;
-            document.querySelector("#status").value = e.status;
-            // document.querySelector("#prioridade").value = e.prioridade;
-        })
-}
+//     fetch(endpoint, requisicao)
+//         .then(res => res.json())
+//         .then(e => {
+//             // document.querySelector("#modelo").value = e.equipamento.modelo;
+//             document.querySelector("#tipo").value = e.equipamento.tipo;
+//             document.querySelector("#proprietario").value = e.cliente.nome;
+//             document.querySelector("#dataEntrada").value = e.entrada;
+//             document.querySelector("#dataSaida").value = e.eprevisao;
+//             document.querySelector("#defeito").value = e.defeito;
+//             document.querySelector("#status").value = e.status;
+//             // document.querySelector("#prioridade").value = e.prioridade;
+//         })
+// }
 
 
 function ativar(elemento) {

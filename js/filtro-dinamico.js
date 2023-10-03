@@ -38,7 +38,6 @@ function consultarfiltro() {
 
             }
         })
-        .then()
         .catch(error => alert(error.message + "Falha na requisição"))
 
 }
