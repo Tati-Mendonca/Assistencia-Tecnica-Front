@@ -27,6 +27,9 @@ public class Cliente extends Pessoa {
     @Column(name = "TX_DOCUMENTO")
     private String documento;
 
+    @Column(name = "TX_FONE")
+    private Telefone telefone;
+
     @Column(name = "TX_TIPO_DOCUMENTO")
     @Enumerated(EnumType.STRING)
     private TipoDocumentoEnum tipoDocumento;

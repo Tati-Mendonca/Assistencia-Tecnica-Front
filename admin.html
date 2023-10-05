@@ -119,7 +119,7 @@
                 <div
                     class="g-col-lg-8 g-col-md-12 g-col-12 border border-top-0 border-1 rounded-1 rounded-top-0  p-4 mx-n2">
                     <h4 class="font-title">Cadastrar Equipamento</h4>
-                    <form class="dados" id="dados" method="post" action="">
+                    <form class="dados" id="dados" method="post">
 
                         <div class="row mb-3">
                             <div class="col-md-6 my-3">
@@ -128,25 +128,18 @@
                                     placeholder="Digite o nome" required>
                             </div>
 
-                            <!-- <div class="col-md-3 my-3">
-                                <label for="doctype" class="form-label">Tipo de Doc</label>
-                                <select name="doctype" id="doctype" class="form-select" required>
-                                    <option value="0">Selecione</option>
-                                    <option value="1">CPF</option>
-                                    <option value="2">CNPJ</option>
-                                </select>
-                            </div> -->
-
-                            <div class="col-md-3 my-3">
-                                <label for="modelo" class="form-label">Modelo</label>
-                                <input type="text" class="form-control" id="modelo" name="modelo"
-                                    placeholder="Ex: Dell">
-                            </div>
 
                             <div class="col-md-3 my-3">
                                 <label for="documento" class="form-label">Número do Doc</label>
                                 <input type="text" class="form-control" id="documento" name="documento"
                                     placeholder="CPF ou CNPJ">
+                            </div>
+
+                            <div class="col-md-3 my-3">
+                                <label for="telefone" class="form-label">Contato</label>
+                                <input type="tel" class="form-control" id="telefone" name="telefone"
+                                    placeholder="(xx)xxxx-xxxx">
+                                    <!-- placeholder="(xx)xxxx-xxxx" onkeyup="myTel(event)"> -->
                             </div>
 
                             <div class="col-md-12 my-2">
@@ -162,31 +155,25 @@
                             </div>
 
                             <div class="col-md-3 my-3">
+                                <label for="modelo" class="form-label">Modelo</label>
+                                <input type="text" class="form-control" id="modelo" name="modelo"
+                                    placeholder="Ex: Dell">
+                            </div>
+
+                            <div class="col-md-3 my-3">
                                 <label for="dataEntrada" class="form-label">Data de Entrada</label>
                                 <input type="date" class="form-control" id="dataEntrada" name="dataEntrada" required>
-                           
+
                             </div>
 
                             <div class="col-md-3 my-3">
-                                <label for="status" class="form-label">Status</label>
-                                <select name="status" id="status" class="form-select" required>
-                                    <option value="0">Selecione</option>
-                                    <option value="0">Aguardando aprovação</option>
-                                    <option value="0">Aguardando orçamento</option>
-                                    <option value="0">Em concerto</option>
-                                    <option value="0">Finalizado</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-3 my-3">
-                                <label for="dataSaida" class="form-label">Previsão de Entrega</label>
-                                <input type="date" class="form-control" id="dataSaida" name="dataSaida" required>
+                                <label for="previsao" class="form-label">Previsão de Entrega</label>
+                                <input type="date" class="form-control" id="dataSaida" name="previsao" required>
                             </div>
 
                         </div>
                         <div class="d-flex justify-content-end mt-4">
-                            <button type="button" onclick="inserir()"
-                                class="btn btn-primary">Cadastrar</button>
+                            <button type="button" onclick="inserir()" class="btn btn-primary">Cadastrar</button>
                         </div>
                     </form>
                 </div>
@@ -242,7 +229,6 @@
 
             <section class="tab-pane fade" id="search-tab-pane" role="tabpanel" aria-labelledby="search-tab"
                 tabindex="0">
-                <!-- <h4 class="font-title">Ordem de Serviço</h4> -->
                 <div
                     class="col-lg-12 g-col-md-12 g-col-12 border border-1 rounded-1 rounded-top-0 rounded-bottom-0 border-bottom-0 border-top-0 mx-n2 d-flex ">
 
@@ -265,10 +251,10 @@
                                     onchange="consultarfiltro()">
                             </div>
 
-                            <div class="col m-2">
+                            <div class="col m-2 me-4">
                                 <label for="dataEntrada" class="form-label-sm">Data Entrada</label>
-                                <input type="date" name="dataEntrada" id="data-entrada" class="form-control"
-                                    onchange="consultarfiltro()">
+                                <input type="date" name="dataEntrada" id="data" class="form-control"
+                                onchange="consultarfiltro()">
                             </div>
                             <!-- <div class="col m-2">
                                 <label for="dataSaida" class="form-label-sm">Data Saida</label>

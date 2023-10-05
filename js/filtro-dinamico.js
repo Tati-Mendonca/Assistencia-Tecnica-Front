@@ -1,8 +1,10 @@
 function consultarfiltro() {
+    alert("ativou o filtro")
     let valor = document.querySelector("#search").value;
-    let dataInicial = document.querySelector("#data-entrada").value;
+    let dataInicial = document.querySelector("#data").value;
     // let dataFinal = document.querySelector("#data-fim").value;
     let documento = document.querySelector("#form-documento").value;
+    console.log(documento);
 
     let exibir = document.querySelector(".elemento-oculto").style.display = "block"
     let ocultar = document.querySelector(".elemento-visivel").style.display = "none"

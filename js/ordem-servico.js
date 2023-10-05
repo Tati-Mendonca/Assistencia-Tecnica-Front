@@ -12,7 +12,8 @@ function load() { //carrrega a página mostrando essas informações
 }
 
 function reloadTable() {
-    location.reload()
+    const formulario = document.querySelector("#dados")
+    formulario.reset()
 }
 
 function listarTipos() {
@@ -31,23 +32,48 @@ function montarTipos(res) {
     res.forEach(e => options += `<option value=${e}>${e}</option>`);
     document.querySelector("#tipo").innerHTML = options;
 }
+
+
 //_______________________________________________________________________
 
 function inserir() {
 
+
+    let tel = document.querySelector("#telefone").value
+    console.log(tel);
+    const numeroCompleto = tel.replace(/[^0-9]+/g, '')
+    const area = numeroCompleto.substr(0, 2)
+    const numero = numeroCompleto.substr(2, numeroCompleto.length)
+    console.log(numero);
+    console.log(area);
+
+    // let telefoneDb = document.querySelector("#telefone")
+    // console.log(numero);
+    // console.log(telefoneDb);
+    // telefoneDb.setAttribute("value",`${numero}`)
+
+    // document.querySelector(#numero).value Descobri um jeito de passar o numero no body
+
+
+
     const body = {
         "equipamento": {
-            "tipo": document.querySelector("#tipo").value,
-            "modelo": document.querySelector("#modelo").value
+            "modelo": document.querySelector("#modelo").value,
+            "tipo": document.querySelector("#tipo").value
         },
         "cliente": document.querySelector("#proprietario").value,
-        "observacoes": document.querySelector("#documento").value,
-        "defeito": document.querySelector("#defeito").value,
         "entrada": document.querySelector("#dataEntrada").value,
-        "status": document.querySelector("#status").value,
         "previsao": document.querySelector("#dataSaida").value,
+        "defeito": document.querySelector("#defeito").value,
+        "documento": document.querySelector("#documento").value,
+        "telefone": {
+            // "area": area,
+            "numero": document.querySelector("#telefone").value,
+            // "tipo": numero
+        }
+
     }
-    console.log(body);
+    console.log(body)
     const requisicao = {
         method: "POST",
         body: JSON.stringify(body),
@@ -58,17 +84,15 @@ function inserir() {
     fetch(urlOS, requisicao)
         .then(res => res.json())
         .then((res) => {
-            console.log(error);
-            if (res.status === 200) {
-                alert("Registro inserido com sucesso")
-            } else if (res.status === 400) {
-                alert("Verifique os dados e tente novamente")
-            } 
+            alert("Cadastrado com sucesso")
+            reloadTable()
+            listar()
+            console.log(res);
         })
-        .catch(error => console.log("Falha na requisição " + error))
+        .catch(error => console.log("Falha na requisição "))
 }
 
-//_______________________________________________________________________
+//_______________________________________________________________________TABLE VISIVEL
 function listar() {
     const requisicao = {
         method: "GET"
@@ -80,8 +104,9 @@ function listar() {
         .catch(error => alert("Falha na requisição"))
 }
 
-
+//monta a tabela home
 function montarDados(res) {
+
     let dados = " "
     res.forEach(e => dados += `<tr>
                                 <td>${e.id}</td>
@@ -95,10 +120,30 @@ function montarDados(res) {
                                 <td><a href="#" onclick="buscarPorId(${e.id})"><i class="bi bi-pencil-fill"></i></a> | <a href="#" onclick="finalizar(${e.id})"><i class="bi bi-check2"></i></a></td>
                               </tr>`);
 
-
     document.querySelector("#tableDados").innerHTML = dados;
 
 }
+
+
+
+
+// ______________________________________________________________
+// validação input telefone:
+
+// function myTel(event) {
+
+//     let tel = event.target;
+//     tel.value = mascara(tel.value)
+// }
+// const mascara = (tel) => { //preenche corretamente a bagaceta do input
+//     if (!tel) return ""
+//     tel = tel.replace(/\D/g, '')
+//     tel = tel.replace(/(\d{2})(\d)/, "($1) $2")
+//     tel = tel.replace(/(\d)(\d{4})$/, "$1-$2")
+//     return tel
+// }
+
+
 
 //_______________________________________________________________________
 
@@ -113,7 +158,9 @@ function montarResposta(res) {
                                 <td>${e.entrada}</td>
                                 <td>${e.defeito}</td>
                                 <td>${e.previsao}</td>
-                                <td>${e.status}</td>
+
+                                <td>${e.cliente.documento}</td>
+                                <td>${e.cliente.telefone.numero}</td>
                                 <td><a href="#" onclick="buscarPorId(${e.id})"><i class="bi bi-pencil-fill"></i></a> | <a href="#" onclick="finalizar(${e.id})"><i class="bi bi-check2"></i></a></td>
                               </tr>`);
 
@@ -145,31 +192,10 @@ function finalizar(id) {
         .catch(error => alert("Falha na requisição"))
 }
 //_______________________________________________________________________
-function buscarPorId(id) {
-    const requisicao = {
-        method: "GET"
-    }
-    const endpoint = `${urlOS}/${id}`;
 
-    fetch(endpoint, requisicao)
-        .then(res => res.json())
-        .then(e => {
-            document.querySelector("#modelo").value = e.equipamento.modelo;
-            document.querySelector("#tipo").value = e.equipamento.tipo;
-            document.querySelector("#proprietario").value = e.cliente.nome;
-            document.querySelector("#dataEntrada").value = e.entrada;
-            document.querySelector("#dataSaida").value = e.eprevisao;
-            document.querySelector("#defeito").value = e.defeito;
-            document.querySelector("#status").value = e.status;
-            document.querySelector("#prioridade").value = e.prioridade;
+//_______________________________________________________________________Search
 
-        })
-        .catch(error => alert("Falha na requisição"))
-}
-
-//_______________________________________________________________________
-
-// function consultar() {
+// function consultar(id) {
 //     const requisicao = {
 //         method: "GET"
 //     }
@@ -200,28 +226,31 @@ function buscarPorId(id) {
 //         .catch(error => alert("Falha na requisição"))
 // }
 
-//_______________________________________________________________________
+//_______________________________________________________________________ //certinho atualizar
 
-// function buscarPorId(id) {
-//     var requisicao = {
-//         method: "GET"
-//     }
+function buscarPorId(id) {
+    var requisicao = {
+        method: "GET"
+    }
 
-//     const endpoint = `${urlOS}/${id}`
+    const endpoint = `${urlOS}/${id}`
 
-//     fetch(endpoint, requisicao)
-//         .then(res => res.json())
-//         .then(e => {
-//             // document.querySelector("#modelo").value = e.equipamento.modelo;
-//             document.querySelector("#tipo").value = e.equipamento.tipo;
-//             document.querySelector("#proprietario").value = e.cliente.nome;
-//             document.querySelector("#dataEntrada").value = e.entrada;
-//             document.querySelector("#dataSaida").value = e.eprevisao;
-//             document.querySelector("#defeito").value = e.defeito;
-//             document.querySelector("#status").value = e.status;
-//             // document.querySelector("#prioridade").value = e.prioridade;
-//         })
-// }
+    fetch(endpoint, requisicao)
+        .then(res => res.json())
+        .then((res) => {
+            document.querySelector("#modelo").value = res.equipamento.modelo;
+            document.querySelector("#proprietario").value = res.cliente.nome;
+            document.querySelector("#documento").value = res.cliente.documento;
+            document.querySelector("#telefone").value = res.cliente.telefone.numero;
+            document.querySelector("#defeito").value = res.defeito;
+            document.querySelector("#tipo").value = res.equipamento.tipo;
+            document.querySelector("#dataEntrada").value = res.entrada;   
+            document.querySelector("#dataSaida").value = res.previsao
+            console.log(res);
+        })
+   
+        .catch(error => alert("Falha na requisição " + error))
+}
 
 
 function ativar(elemento) {
@@ -231,15 +260,4 @@ function ativar(elemento) {
     }
     elemento.classList.add("active")
 }
-
-
-
-
-
-
-
-
-
-// usar este id: home-tab-pane na busca
-
 
