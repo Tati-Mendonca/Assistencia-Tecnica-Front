@@ -139,7 +139,7 @@
                                 <label for="telefone" class="form-label">Contato</label>
                                 <input type="tel" class="form-control" id="telefone" name="telefone"
                                     placeholder="(xx)xxxx-xxxx">
-                                    <!-- placeholder="(xx)xxxx-xxxx" onkeyup="myTel(event)"> -->
+                                <!-- placeholder="(xx)xxxx-xxxx" onkeyup="myTel(event)"> -->
                             </div>
 
                             <div class="col-md-12 my-2">
@@ -254,7 +254,7 @@
                             <div class="col m-2 me-4">
                                 <label for="dataEntrada" class="form-label-sm">Data Entrada</label>
                                 <input type="date" name="dataEntrada" id="data" class="form-control"
-                                onchange="consultarfiltro()">
+                                    onchange="consultarfiltro()">
                             </div>
                             <!-- <div class="col m-2">
                                 <label for="dataSaida" class="form-label-sm">Data Saida</label>
@@ -401,7 +401,7 @@
 
                 <article class="d-flex">
                     <div class=" col-8 border border-1 border-top-0 border-end-0 rounded-1 p-4">
-                        <h4 class="font-title">Consultar Técnicos</h4>
+                        <h4 class="font-title" id="Tech">Consultar Técnicos</h4>
 
                         <table class="text-center table mt-4 font-light table-striped">
                             <thead class="table-primary">
@@ -441,7 +441,47 @@
                         </div>
                     </aside>
                 </article>
+                <!-- <nav aria-label="paginacao tecnicos" id="pagination">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#tech" aria-label="Anterior">
+                                <span class="sr-only font-light">Anterior</span>
+                            </a>
+                        </li>
+                        <li class="page-item active" onclick="fazerPaginacao(pagina)" font-light"><a class="page-link"
+                                href="#pegarPagina1">1</a></li>
+                        <li class="page-item" onclick="" font-light"><a class="page-link"
+                                href="#pegarPagina2">2</a></li>
+                        <li class="page-item" onclick="" font-light"><a class="page-link"
+                                href="#pegarPagina3">3</a></li>
+                        <li class="page-item" onclick="">
+                            <a class="page-link" href="#proxima" aria-label="Proxima">
+                                <span class="sr-only font-light">Próxima</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav> -->
 
+                <nav aria-label="paginacao tecnicos" id="pagination">
+                    <ul class="pagination">
+                        <li class="page-item">
+                        <!-- <li class="page-item disabled"> -->
+                            <a class="page-link" onclick="muda(0)" id="btn" aria-label="Anterior"><span class="sr-only font-light">Anterior</span></a>
+                        </li class="page-item">
+                        <li>
+                            <a class="page-link font-light" onclick="muda(1)" id="btn" class="btn-pag" value="1">1</a>
+                        </li class="page-item">
+                        <li>
+                            <a class="page-link font-light" onclick="muda(2)" id="btn" class="btn-pag" value="2">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link font-light" onclick="muda(3)" id="btn" class="btn-pag" value="3">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link font-light" onclick="muda(4)" id="btn" aria-label="Proxima"><span class="sr-only font-light">Próxima</span></a>
+                        </li>
+                    </ul>
+                </nav>
             </section>
         </div>
 

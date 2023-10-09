@@ -33,7 +33,11 @@ public class OrdemServicoController {
                                                      @RequestParam(required = false) String nome,
                                                      @RequestParam(required = false) String modelo,
                                                      @RequestParam(required = false) LocalDate dataInicio,
-                                                     @RequestParam(required = false) LocalDate dataFim) {
+                                                     @RequestParam(required = false) LocalDate dataFim
+
+    ) {
+
+
         var filtro = FiltroOSDTO.builder().documento(documento)
                     .nome(nome)
                     .modelo(modelo)
