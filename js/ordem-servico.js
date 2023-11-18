@@ -3,7 +3,8 @@ const urlEquipamentos = urlBase + "equipamentos"
 const urlOS = urlBase + "ordem-servico"
 const urlTecnicos = urlBase + "tecnicos"
 
-function load() { //carrrega a página mostrando essas informações
+
+function load() { 
     listarTipos();
     listar();
     const hoje = new Date()
@@ -34,8 +35,6 @@ function montarTipos(res) {
 }
 
 
-//_______________________________________________________________________
-
 function inserir() {
 
 
@@ -55,7 +54,6 @@ function inserir() {
     // document.querySelector(#numero).value Descobri um jeito de passar o numero no body
 
 
-
     const body = {
         "equipamento": {
             "modelo": document.querySelector("#modelo").value,
@@ -71,8 +69,8 @@ function inserir() {
             "numero": document.querySelector("#telefone").value,
             // "tipo": numero
         }
-
     }
+ 
     console.log(body)
     const requisicao = {
         method: "POST",
@@ -82,17 +80,22 @@ function inserir() {
         }
     }
     fetch(urlOS, requisicao)
-        .then(res => res.json())
         .then((res) => {
-            alert("Cadastrado com sucesso")
-            reloadTable()
-            listar()
-            console.log(res);
-        })
-        .catch(error => console.log("Falha na requisição "))
-}
+            if (res.status === 200) {
+                alert("Equipamento cadastrado com sucesso")
+                reloadTable()
+                listar()
+            } else{
+                alert("Verifique os dados e tente novamente")
+                console.log(res.error);
 
-//_______________________________________________________________________TABLE VISIVEL
+            }
+        })
+        .then(res => res.json())
+        .catch(error => console.log("Falha na requisição" + error))
+    }
+
+
 function listar() {
     const requisicao = {
         method: "GET"
@@ -104,9 +107,9 @@ function listar() {
         .catch(error => alert("Falha na requisição"))
 }
 
-//monta a tabela home
-function montarDados(res) {
 
+function montarDados(res) {
+console.log(res);
     let dados = " "
     res.forEach(e => dados += `<tr>
                                 <td>${e.id}</td>
@@ -191,42 +194,7 @@ function finalizar(id) {
         .then(res => listar())
         .catch(error => alert("Falha na requisição"))
 }
-//_______________________________________________________________________
 
-//_______________________________________________________________________Search
-
-// function consultar(id) {
-//     const requisicao = {
-//         method: "GET"
-//     }
-
-//     const id = document.querySelector("#search").value;
-
-
-//     const endpoint = `${urlOS}/${id}`;
-
-//     fetch(endpoint, requisicao)
-//         .then(res => res.json())
-//         .then(e => {
-//             const dados = `<tr>
-//                                 <td>${e.id}</td>
-//                                 <td>${e.cliente.nome}</td>
-//                                 <td>${e.equipamento.tipo}</td>
-//                                 <td>${e.equipamento.modelo}</td>
-//                                 <td>${e.entrada}</td>
-//                                 <td>${e.defeito}</td>
-//                                 <td>${e.previsao}</td>
-//                                 <td>${e.status}</td>
-
-//                                 <td><a href="#" onclick="buscarPorId(${e.id})"><i class="bi bi-pencil-fill"></i></a> | <a href="#" onclick="finalizar(${e.id})"><i class="bi bi-check2"></i></a></td>
-
-//                     </tr>`;
-//             document.querySelector("#tableResultado").innerHTML = dados;
-//         })
-//         .catch(error => alert("Falha na requisição"))
-// }
-
-//_______________________________________________________________________ //certinho atualizar
 
 function buscarPorId(id) {
     var requisicao = {
@@ -253,11 +221,5 @@ function buscarPorId(id) {
 }
 
 
-function ativar(elemento) {
-    let itens = document.querySelectorAll(".page-item")
-    for (let i = 0; i < itens.length; i++) {
-        itens[i].classList.remove("active")
-    }
-    elemento.classList.add("active")
-}
+
 

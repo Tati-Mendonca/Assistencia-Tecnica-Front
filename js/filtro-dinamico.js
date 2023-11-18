@@ -1,5 +1,5 @@
 function consultarfiltro() {
-    alert("ativou o filtro")
+
     let valor = document.querySelector("#search").value;
     let dataInicial = document.querySelector("#data").value;
     // let dataFinal = document.querySelector("#data-fim").value;

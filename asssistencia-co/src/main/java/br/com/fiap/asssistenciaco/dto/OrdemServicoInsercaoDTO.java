@@ -28,10 +28,8 @@ public class OrdemServicoInsercaoDTO {
     @NotBlank(message = "Defeito é obrigatório")
     private String defeito;
 
-//    ----------------------
     @NotBlank(message = "Documento é obrigatório")
     private String documento;
-//    ---------------------------
 
     private Telefone telefone;
 

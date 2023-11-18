@@ -45,45 +45,7 @@
                         <p>Seja bem-vindo - <a href="./index.html" class=" text-light">Sair</a></p>
                     </div>
                 </div>
-                <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active text-light" aria-current="page" href="./newindex.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="#servicos">Serviços</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Categorias
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#notebooksModal">Notebook</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#celularesModal">Celular</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#tabletsModal">Tablet</a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#eletronicosModal">Outros
-                        Eletrônicos</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#contato" class="nav-link text-light">Contato</a>
-                </li>
-                <li class="nav-item">
-                  <a href="./newindex.html" class="nav-link text-light" >Sair<i class="bi bi-box-arrow-in-right icon-login"></i></a>
-                </li>
-              </ul> -->
-                <!-- </div> -->
+      
             </div>
         </nav>
     </div>
@@ -139,7 +101,7 @@
                                 <label for="telefone" class="form-label">Contato</label>
                                 <input type="tel" class="form-control" id="telefone" name="telefone"
                                     placeholder="(xx)xxxx-xxxx">
-                                <!-- placeholder="(xx)xxxx-xxxx" onkeyup="myTel(event)"> -->
+    
                             </div>
 
                             <div class="col-md-12 my-2">
@@ -177,8 +139,7 @@
                         </div>
                     </form>
                 </div>
-                <!-- 
-                Tabela de preenchimento dinâmico -->
+
                 <article>
                     <div class=" g-col-12 border border-1 rounded-1 p-4" id="os">
                         <h4 class="font-title">Ordem de Serviço</h4>
@@ -196,31 +157,13 @@
                                     <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="tableDados"> <!-- onde a mágica acontece <<<<<<<<<<<< -->
+                            <tbody id="tableDados"> 
 
                             </tbody>
 
                         </table>
-                        <nav aria-label="Navegação de página exemplo">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#os" aria-label="Anterior">
-                                        <span class="sr-only font-light">Anterior</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active" onclick="ativar(this)" font-light"><a class="page-link"
-                                        href="#os">1</a></li>
-                                <li class="page-item" onclick="ativar(this)" font-light"><a class="page-link"
-                                        href="#os">2</a></li>
-                                <li class="page-item" onclick="ativar(this)" font-light"><a class="page-link"
-                                        href="#os">3</a></li>
-                                <li class="page-item" onclick="ativar(this)">
-                                    <a class="page-link" href="#os" aria-label="Proxima" onclick="ativar(this)">
-                                        <span class="sr-only font-light">Próxima</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+
+
                     </div>
 
                 </article>
@@ -256,15 +199,7 @@
                                 <input type="date" name="dataEntrada" id="data" class="form-control"
                                     onchange="consultarfiltro()">
                             </div>
-                            <!-- <div class="col m-2">
-                                <label for="dataSaida" class="form-label-sm">Data Saida</label>
-                                <input type="date" name="dataSaida" id="data-fim" class="form-control">
-                            </div> -->
-
-                            <!-- <div class="d-flex justify-content-end mb-2 pe-4">
-                                <button id="buscarOS" class="btn btn-primary "
-                                    onclick="consultarfiltro()">Pesquisar</button>
-                            </div> -->
+  
                         </div>
 
                     </div>
@@ -276,7 +211,6 @@
                 </div>
                 <article class="elemento-oculto">
                     <div class=" g-col-12 border border-1 border-top-0 rounded-1 rounded-top-0 px-4">
-                        <!-- <h4 class="font-title">Ordem de Serviço</h4> -->
                         <table class="text-center table py-4 font-light table-striped">
                             <thead class="table-primary">
                                 <tr>
@@ -298,25 +232,6 @@
                         </table>
                     </div>
                 </article>
-                <!--<nav aria-label="Navegação de página exemplo">
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Anterior">
-                          <span aria-hidden="true">&laquo;</span>
-                          <span class="sr-only">Anterior</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Próximo">
-                          <span aria-hidden="true">&raquo;</span>
-                          <span class="sr-only">Próximo</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav> -->
 
             </section>
 
@@ -336,17 +251,6 @@
                         <input type="search" name="buscarServico" id="buscarServico" onsearch="buscarPorIdServico()"
                             class="form-control" placeholder="Pesquisar">
                     </div>
-
-                    <!-- <div class="col-2 p-4"> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Filtrar</option>
-                            <option value="1">Notebook</option>
-                            <option value="2">Tablet</option>
-                            <option value="3">Celular</option>
-                        </select>
-                    </div> -->
-
-
 
                     <div class="col-2 p-4">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -377,13 +281,12 @@
                         <p id="resultado" class="text-success text-center 
                     elemento-oculto">teste</p>
                     </div>
-                    <div class=" g-col-12 border border-1 border-top-0 rounded-1 rounded-top-0">
+                    <div class=" g-col-12 border border-1 border-top-0 rounded-1 rounded-top-0 p-4">
                         <table class="text-center table font-light table-striped">
                             <thead class="table-primary">
                                 <tr>
                                     <th>Cód</th>
                                     <th>Descrição</th>
-                                    <!-- <th>Equipamento</th> -->
                                     <th>Valor</th>
                                     <th>Ações</th>
                                 </tr>
@@ -398,138 +301,78 @@
             </section>
             <section class="tab-pane fade" id="tecnicos-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
                 tabindex="0">
+                <div
+                    class="col-lg-12 g-col-md-12 g-col-12 border border-1 rounded-1 rounded-top-0 rounded-bottom-0 border-bottom-0 border-top-0 mx-n2 d-flex justify-content-between">
 
-                <article class="d-flex">
-                    <div class=" col-8 border border-1 border-top-0 border-end-0 rounded-1 p-4">
-                        <h4 class="font-title" id="Tech">Consultar Técnicos</h4>
+                    <div class="col-10 p-4" id="servicos-disponiveis">
+                        <h4 class="font-title" id="tech">Consultar Técnicos</h4>
+                    </div>
 
+                    <div class="col-2 p-4">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#tecnicoModal" onclick="montarModalTech()">
+                            Novo Serviço
+                        </button>
+                    </div>
+
+                    <div class="modal fade" id="tecnicoModal" tabindex="-1" role="dialog"
+                        aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="tituloModalTech">Título do modal</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <div id="modalTech"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <article class="">
+                    <div class=" g-col-12 border border-1  rounded-1 p-4 pt-0">
                         <table class="text-center table mt-4 font-light table-striped">
                             <thead class="table-primary">
                                 <tr>
                                     <th>Id</th>
                                     <th>Nome</th>
-                                    <th>Telefone</th>
                                     <th>Email</th>
+                                    <th>Celular</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="tableTecnicos"> <!-- onde a mágica acontece <<<<<<<<<<<< -->
-
+                            <tbody id="tableTecnicos">
                             </tbody>
-
                         </table>
 
-                    </div>
-                    <aside class="col-4">
-
-                        <div class="border border-top-0 p-4">
-                            <h4 class="font-title">Novo Cadastro</h4>
-                            <label for="nameTech" class="form-label mt-4">Nome</label>
-                            <input type="text" name="nameTech" id="nameTech" class="form-control"
-                                placeholder="Digite o nome">
-                            <label for="telefoneTech" class="form-label mt-4">Telefone</label>
-                            <input type="text" name="telefoneTech" id="telefoneTech" class="form-control"
-                                placeholder="(xx) xxxx-xxxx">
-                            <label for="emalTech" class="form-label mt-4">Email</label>
-                            <input type="email" name="emalTech" id="emalTech" class="form-control"
-                                placeholder="email@assistenciacompany.com">
-                            <div class="d-flex justify-content-end mt-4">
-                                <button type="button" onclick="cadastrarTech()" class="btn btn-primary my-4"
-                                    id="btn-servicos">
-                                    Cadastrar</button>
-                            </div>
-                        </div>
-                    </aside>
+                        <nav aria-label="Navegação de página exemplo">
+                            <ul class="pagination" id="pagination2">
+                                <li class="page-item first disabled" onclick="ativar(this),voltarTela()" id="0"><a
+                                        class="page-link" aria-label="Anterior"><span
+                                            class="sr-only font-light">Anterior</span></a>
+                                </li>
+                                <li class="page-item active" onclick="ativar(this), mudar(this)" id="1" font-light"><a
+                                        class="page-link">1</a></li>
+                                <li class="page-item" onclick="ativar(this), mudar(this)" font-light" id="2"><a
+                                        class="page-link" href="#os">2</a></li>
+                                <li class="page-item" onclick="ativar(this), mudar(this)" font-light id="3""><a class="
+                                    page-link" href="#os">3</a></li>
+                                <li class="page-item next" onclick="ativar(this), proximaTela()" id="4"><a
+                                        class="page-link" href="#os" aria-label="Proxima"><span
+                                            class="sr-only font-light">Próxima</span></a></li>
+                            </ul>
+                        </nav>
                 </article>
-                <!-- <nav aria-label="paginacao tecnicos" id="pagination">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#tech" aria-label="Anterior">
-                                <span class="sr-only font-light">Anterior</span>
-                            </a>
-                        </li>
-                        <li class="page-item active" onclick="fazerPaginacao(pagina)" font-light"><a class="page-link"
-                                href="#pegarPagina1">1</a></li>
-                        <li class="page-item" onclick="" font-light"><a class="page-link"
-                                href="#pegarPagina2">2</a></li>
-                        <li class="page-item" onclick="" font-light"><a class="page-link"
-                                href="#pegarPagina3">3</a></li>
-                        <li class="page-item" onclick="">
-                            <a class="page-link" href="#proxima" aria-label="Proxima">
-                                <span class="sr-only font-light">Próxima</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav> -->
 
-                <nav aria-label="paginacao tecnicos" id="pagination">
-                    <ul class="pagination">
-                        <li class="page-item">
-                        <!-- <li class="page-item disabled"> -->
-                            <a class="page-link" onclick="muda(0)" id="btn" aria-label="Anterior"><span class="sr-only font-light">Anterior</span></a>
-                        </li class="page-item">
-                        <li>
-                            <a class="page-link font-light" onclick="muda(1)" id="btn" class="btn-pag" value="1">1</a>
-                        </li class="page-item">
-                        <li>
-                            <a class="page-link font-light" onclick="muda(2)" id="btn" class="btn-pag" value="2">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link font-light" onclick="muda(3)" id="btn" class="btn-pag" value="3">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link font-light" onclick="muda(4)" id="btn" aria-label="Proxima"><span class="sr-only font-light">Próxima</span></a>
-                        </li>
-                    </ul>
-                </nav>
             </section>
         </div>
-
         <div class="grid gap-1">
-
         </div>
     </main>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-
-<!-- <div class="col-md-4 my-3">
-    <label for="observacao" class="form-label">Prioridade</label>
-    <div class="mt-2">
-        <input type="radio" name="prioridade" id="media">
-        <label for="media">Média</label>
-        <input type="radio" name="prioridade" id="alta" class="ms-2">
-        <label for="alta">Alta</label>
-        <input type="radio" name="prioridade" id="critica" class="ms-2">
-        <label for="critica">Crítica</label>
-    </div>
-    <!-- <label for="alta">Baixa</label>
-    <input type="radio" name="prioridade" id="baixa"> -->
-<!-- <textarea class="form-control" id="observacao" name="observacao"
-        placeholder="Ex: O equipamento..." required></textarea> -->
-<!-- </div> -->
-
-
-<!-- <div class="tab-content" id="searcch-tab">
-    <div class="tab-pane fade" id="search-tab" role="search-tab" aria-labelledby="search-tab" tabindex="0">
-        <div class="d-flex">
-            <!-- Coluna 2 -->
-<!-- <section class="col-lg-8 g-col-md-12 g-col-12 border border-1 border-top-0 rounded-1  p-sm-4 mx-n2"> -->
-<!-- <section class="g-col-lg-4 g-col-md-12 g-col-12 border border-1 border-top-0 rounded-1  p-sm-4 mx-n2"> -->
-<!-- 
-                <h4 class="font-title">Buscar Ordem de Serviço</h4>
-                <!-- <label for="search"></label> -->
-<!-- <div class=" d-flex justify-content-end mt-2">
-                    <form action=""></form>
-                    <input type="search" name="search" id="search" class="form-control" placeholder="Ex: Cód123">
-                    <button type="submit" onclick="consultar()" class="ms-2 btn btn-primary">Buscar</button>
-                </div>
-            </section>
-
-        </div>   -->

@@ -154,9 +154,6 @@ function deletarServico(id) {
             } if (res.status === 400) {
                 alert("Não é possivel deletar esse serviço pois ele foi usado em uma OS")
             }
-            else {
-                alert("Verifique os dados e tente novamente")
-            }
         })
         .then(res => listar())
         .catch(error => alert("Falha na requisição"))

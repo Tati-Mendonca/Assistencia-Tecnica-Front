@@ -13,6 +13,7 @@ public class ClienteResponseDTO {
     private TipoDocumentoEnum tipoDocumento;
     private String documento;
     private Telefone telefone;
+ //   private String telefone;
     private String nome;
 
 }

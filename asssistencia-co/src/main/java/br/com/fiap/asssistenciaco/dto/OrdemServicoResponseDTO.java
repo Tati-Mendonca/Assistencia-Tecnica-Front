@@ -25,9 +25,8 @@ public class OrdemServicoResponseDTO {
     @JsonIgnore
     private LocalDateTime dataPrevisao;
 
-//    --------------------------------
     private String documento;
-//    --------------------------------
+
     private Telefone telefone;
 
     private String defeito;

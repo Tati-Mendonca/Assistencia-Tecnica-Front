@@ -1,7 +1,5 @@
 package br.com.fiap.asssistenciaco.entity;
 
-
-
 import br.com.fiap.asssistenciaco.enums.TipoDocumentoEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,5 +31,7 @@ public class Cliente extends Pessoa {
     @Column(name = "TX_TIPO_DOCUMENTO")
     @Enumerated(EnumType.STRING)
     private TipoDocumentoEnum tipoDocumento;
+
+
 
 }
