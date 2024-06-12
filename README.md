@@ -8,11 +8,13 @@ O escopo geral do projeto foi desenvolvido de forma colaborativa durante as aula
 
 ## Protótipos
 
-<img src="https://github.com/Tati-Mendonca/AssistenciaCompany/assets/97405991/10dc5306-d345-46c5-a1e1-5bae6e91a4de" alt="Home" width="600">
-<img src="https://github.com/Tati-Mendonca/AssistenciaCompany/assets/97405991/b5e450cd-15bd-48b7-a4f4-476a4e4ab1af" alt="Admin" width="600">
+<img src="https://github.com/Tati-Mendonca/AssistenciaCompany/assets/97405991/10dc5306-d345-46c5-a1e1-5bae6e91a4de" alt="Home" width="500">
+<img src="https://github.com/Tati-Mendonca/AssistenciaCompany/assets/97405991/b5e450cd-15bd-48b7-a4f4-476a4e4ab1af" alt="Admin" width="500">
 
 
-## Screenshots
+## Projeto
+
+Visualize o projeto aqui: https://assistencia-co.netlify.app/
 
 <a href="https://uploaddeimagens.com.br/imagens/lO6qUIk"><img src="https://uploaddeimagens.com.br/images/004/776/511/full/projeto-fiap.png?1714177302" alt="Captura-de-tela-inicial-do-projeto" border="0" /></a>
 
