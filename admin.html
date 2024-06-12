@@ -45,7 +45,7 @@
                         <p>Seja bem-vindo - <a href="./index.html" class=" text-light">Sair</a></p>
                     </div>
                 </div>
-      
+
             </div>
         </nav>
     </div>
@@ -78,8 +78,22 @@
 
             <section class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                 tabindex="0">
+
                 <div
                     class="g-col-lg-8 g-col-md-12 g-col-12 border border-top-0 border-1 rounded-1 rounded-top-0  p-4 mx-n2">
+
+                    <div class=" alert alert-success" id="sucesso" role="alert">
+                        <div class="row d-flex justify-content-center">
+                            Equipamento cadastrado com sucesso!
+                        </div>
+                    </div>
+                    <div class=" alert alert-warning" id="alerta" role="alert">
+                        <div class="row d-flex justify-content-center">
+                            Verifique se todos os campos foram preenchidos e tente novamente!
+                        </div>
+                    </div>
+
+
                     <h4 class="font-title">Cadastrar Equipamento</h4>
                     <form class="dados" id="dados" method="post">
 
@@ -101,7 +115,7 @@
                                 <label for="telefone" class="form-label">Contato</label>
                                 <input type="tel" class="form-control" id="telefone" name="telefone"
                                     placeholder="(xx)xxxx-xxxx">
-    
+
                             </div>
 
                             <div class="col-md-12 my-2">
@@ -157,28 +171,21 @@
                                     <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="tableDados"> 
-
+                            <tbody id="tableDados">
                             </tbody>
-
                         </table>
-
-
+                        <div class="alert alert-danger" id="falha" role="alert">Falha na requisição!</div>
                     </div>
-
                 </article>
-
             </section>
 
             <section class="tab-pane fade" id="search-tab-pane" role="tabpanel" aria-labelledby="search-tab"
                 tabindex="0">
                 <div
                     class="col-lg-12 g-col-md-12 g-col-12 border border-1 rounded-1 rounded-top-0 rounded-bottom-0 border-bottom-0 border-top-0 mx-n2 d-flex ">
-
                     <div class="col-4 p-4">
                         <h4 class="font-title">Ordem de Serviço</h4>
                     </div>
-
                     <div class="col-8">
                         <div class="row">
                             <div class=" col m-2 ">
@@ -187,27 +194,22 @@
                                 <input type="search" name="nome" id="search" class="form-control"
                                     placeholder="Pesquisar" onsearch="consultarfiltro()">
                             </div>
-
                             <div class="col m-2">
                                 <label for="documento" class="form-label-sm">CPF</label>
                                 <input type="text" name="documento" id="form-documento" class="form-control"
                                     onchange="consultarfiltro()">
                             </div>
-
                             <div class="col m-2 me-4">
                                 <label for="dataEntrada" class="form-label-sm">Data Entrada</label>
                                 <input type="date" name="dataEntrada" id="data" class="form-control"
                                     onchange="consultarfiltro()">
                             </div>
-  
                         </div>
-
                     </div>
 
                 </div>
                 <div
                     class="bg-danger-subtle border border-1 border-top-0 rounded-top-0 rounded-bottom-1 elemento-visivel">
-
                 </div>
                 <article class="elemento-oculto">
                     <div class=" g-col-12 border border-1 border-top-0 rounded-1 rounded-top-0 px-4">
@@ -226,13 +228,12 @@
                                 </tr>
                             </thead>
                             <tbody id="tableResultado">
-
                             </tbody>
-
                         </table>
+
+                        <div class="alert alert-danger alerta" role="alert">Falha na requisição!</div>
                     </div>
                 </article>
-
             </section>
 
 
@@ -259,7 +260,7 @@
                         </button>
                     </div>
 
-                    <!-- Modal -->
+
                     <div class="modal fade" id="servicoModal" tabindex="-1" role="dialog"
                         aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -294,6 +295,7 @@
                             <tbody id="tableServicos">
                             </tbody>
                         </table>
+                        <div class="alert alert-danger error" role="alert">Falha na requisição!</div>
                     </div>
                 </article>
 
@@ -343,10 +345,10 @@
                                 </tr>
                             </thead>
                             <tbody id="tableTecnicos">
-                            </tbody>
                         </table>
-
-                        <nav aria-label="Navegação de página exemplo">
+                        <div class="alert alert-danger erro" role="alert">Falha na requisição!</div>
+                        </tbody>
+                        <nav aria-label="nav-pagination">
                             <ul class="pagination" id="pagination2">
                                 <li class="page-item first disabled" onclick="ativar(this),voltarTela()" id="0"><a
                                         class="page-link" aria-label="Anterior"><span

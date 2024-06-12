@@ -1,10 +1,7 @@
 function consultarfiltro() {
-
     let valor = document.querySelector("#search").value;
     let dataInicial = document.querySelector("#data").value;
-    // let dataFinal = document.querySelector("#data-fim").value;
     let documento = document.querySelector("#form-documento").value;
-    console.log(documento);
 
     let exibir = document.querySelector(".elemento-oculto").style.display = "block"
     let ocultar = document.querySelector(".elemento-visivel").style.display = "none"
@@ -15,12 +12,10 @@ function consultarfiltro() {
     }
     const endpoint = `${urlOS}?nome=${valor}&dataInicio=${dataInicial}&documento=${documento}`;
 
-    console.log(endpoint);
 
     fetch(endpoint, requisicao)
         .then(res => res.json())
         .then((data) => {
-
             let dados = " "
             for (let i = 0; i < data.length; i++) {
                 e = data[i]
@@ -37,10 +32,9 @@ function consultarfiltro() {
                                                </tr>`
 
                 document.querySelector("#tableResultado").innerHTML = dados;
-
             }
         })
-        .catch(error => alert(error.message + "Falha na requisição"))
-
+        .then(res => document.querySelector(".alerta").hidden = true)
+        .catch(error => document.querySelector(".alerta").hidden = false)
+        //.catch(error => alert(error.message + "Falha na requisição"))
 }
-

@@ -10,7 +10,7 @@ function listarTecnicos(numeroPag) {
 
 
     const endpoint = `${urlTecnicos}?pagina=${numeroPag}`
-console.log(endpoint);
+
     fetch(endpoint)
         .then(res => res.json())
         .then(res => {
@@ -35,7 +35,9 @@ console.log(endpoint);
                 document.querySelector("#tableTecnicos").innerHTML = dadosTec;
             }
         })
-        .catch(error => document.querySelector(".alert").hidden = false)
+        .then(res => document.querySelector(".erro").hidden = true)
+        .catch(error => document.querySelector(".erro").hidden = false)
+        .catch(error => alert("Falha de requisição"))
 }
 
 
