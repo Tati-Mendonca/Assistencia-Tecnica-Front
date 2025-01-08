@@ -30,7 +30,7 @@ Visualize o projeto aqui: https://assistencia-co.netlify.app/
 
 
 ## Documentação da API
-[Documentação API] (colocar o link aqui)
+Acesso a Documentação da API: http://localhost:8080/swagger-ui.html
 
 ## Stack utilizada
 - JAVA
